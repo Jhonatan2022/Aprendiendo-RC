@@ -51,11 +51,11 @@ console.log(hola2()()); // Para llamar la otra funci√≥n lo hacemos con otro par√
 function hola3(nombre = "Desconocido", apellido = "-----") {
     // Podemos pasarle un parametro
 
-    /* // Creamos una condicional en caso de que algun prametro no tenga el valor
+    // Creamos una condicional en caso de que algun prametro no tenga el valor
     if (apellido === undefined) {
         // Le asignamos un valor por defecto
         apellido = "-----"
-    }*/
+    }
 
     // Concatenamos el parametro con el mensaje
     return `Hola ${nombre} ${apellido}`
@@ -292,7 +292,7 @@ document.body.append(boton4);
 // Creamos un arreglo con nombres
 const usuarios = ['Jhonattan', 'Manuel', 'Jhon'];
 
-/*
+
 // Crearemos un bucle for para recoorer el arreglo
 for (let usuario = 0; usuario < usuarios.length; usuario++) {
     // Mostramos el arreglo
@@ -300,25 +300,25 @@ for (let usuario = 0; usuario < usuarios.length; usuario++) {
     // Mostramso por consola el arreglo
     console.log(conteo);
 } 
-*/
 
-/* // Abreviamos el anterior bucle for con un forEach
+
+// Abreviamos el anterior bucle for con un forEach
 usuarios.forEach(function(usuario) {
     // Mostramos los elementos del arreglo
     console.log(usuario);
-}) */
+})
 
 
-/* // Ahora usaremos map para crear un nuevo arreglo
+// Ahora usaremos map para crear un nuevo arreglo
 const mapname = usuarios.map(function(usuario) {
     // Creamos un nuevo arreglo
     return `nombre: ${usuario}`;
 })
 
 // Mostramos el nuevo arreglo
-console.log(mapname); */
+console.log(mapname);
 
-/* 
+ 
 // Usaremos el metodo find para buscar un elemento en el arreglo
 const findname = usuarios.find(function(usuario) {
 
@@ -330,7 +330,7 @@ const findname = usuarios.find(function(usuario) {
 })
 
 // Mostramos el elemento encontrado
-console.log(findname); */
+console.log(findname);
 
 
 // Usaremos el metodo filter para buscar un elemento en el arreglo
@@ -355,9 +355,9 @@ console.log(filtername);
 const usuarios1 = ['Jhonattan', 'Manuel', 'Jhon'];
 const usuarios2 = ['Florez', 'Ramirez', 'Lopez'];
 
-/* // Concatenamos los dos arreglos
+// Concatenamos los dos arreglos
 const todos = usuarios1.concat(usuarios2);
- */
+
 // Usamos el spread operator para concatenar los arreglos
 console.log([...usuarios1, ...usuarios2]) ;
 
@@ -384,16 +384,117 @@ console.log(persona7)
 
 
 //-------------------------------------------------------------------------------
-// ECMASCRIPT MODULOS IMPORT Y EXPORT
+// ECMASCRIPT MODULOS IMPORT Y EXPORT OF MODULES APP
 // Importamos la funcion que creamos en modulo.js
-/* import {modulo, multiplicacion} from './modulo.js';
+import {modulo, multiplicacion} from './modulo.js';
 
 // Llamamos a la funcion
 console.log(modulo(12, 8));
-console.log(multiplicacion(2, 8)); */
+console.log(multiplicacion(2, 8));
 
 // Importamos la funcion por defecto
 import modulo from './modulo.js';
 
 // Llamamos a la funcion
 console.log(modulo);
+
+
+
+//-------------------------------------------------------------------------------
+// OPTIOAN CHAINING OPERATOR NOS SIMPLIFICA LA VALIDACION DE OBJETOS
+// Creamos un objeto
+const persona8 = {
+    nombre: 'Jhonattan',
+    edad: 20,
+    profesion: {
+        nombre: 'Desarrollador web',
+        nivel: 'Junior'
+    }
+}
+
+// Creamos una condicional para validar si existe un objeto
+if (persona8.profesion) {
+    // Mostramos el objeto
+    console.log(persona8.profesion.nombre);
+}
+
+// Usamos el optional chaining operator para validar si existe un objeto
+// Si el objeto no existe no mostrara un error
+console.log(persona8.profesion?.status);
+console.log(persona8.profesion?.nivel);
+
+
+
+//-------------------------------------------------------------------------------
+// ASYNC AWAIT PARA LLAMAR A UNA API
+// Creamos un elemneto donde pondremos la lista del api
+const ul = document.createElement('ul');
+const li = document.createElement('li');
+
+// Agregamos clases al elemento
+ul.classList.add('list-group');
+li.classList.add(`list-group-item`);
+
+// Creamos una funcion asincrona
+// Creamos una variable para guardar los datos
+fetch ('https://jsonplaceholder.typicode.com/posts')
+
+// Then nos permite ejecutar una funcion cuando la promesa se resuelva, es decir espera a que la promesa se resuelva
+.then(function (response) {
+
+    // Retornamos los datos
+    return response.json();
+
+    // Creamos una segunda promesa para mostrar los datos cuando se resuelva la primera
+}).then(function (data) {    
+    // Mostramos los datos pror consola
+    console.log(data);
+
+    // Usamos un forEach para recorrer los datos y mostrarlos en el html
+    data.forEach(function (post) {
+        // Creamos un elemento li
+        const li = document.createElement('li');
+        // Agregamos el texto al elemento
+        li.innerText = post.title;
+        // Agregamos clases al elemento
+        li.classList.add(`list-group-item`);
+        // Agregamos el elemento al html
+        ul.append(li);
+    })
+    // Agregamos el elemento al html
+    document.body.append(ul);
+})
+
+
+
+// Creamos una funcion asincrona
+async function obtenerDatos() {
+
+    // Creamos una variable para guardar los datos
+    const datos = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+    // Creamos una segunda promesa para mostrar los datos cuando se resuelva la primera
+    const data = await datos.json();
+
+    // Usamos un forEach para recorrer los datos y mostrarlos en el html
+    data.forEach(function (post) {
+
+        // Creamos un elemento li
+        const li = document.createElement('li');
+
+        // Agregamos el texto al elemento
+        li.innerText = post.title;
+
+        // Agregamos clases al elemento
+        li.classList.add("list-group-item", "list-group-item-primary");
+
+        // Agregamos el elemento al html
+        ul.append(li);
+    })
+
+    // Agregamos el elemento al html
+    document.body.append(ul);
+}
+
+// Llamamos a la funcion
+obtenerDatos();
