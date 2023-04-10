@@ -8,5 +8,13 @@ import ReactDOM from 'react-dom/client';
 
 // Creamos un elemento root con reactDom y lo guardamos en una constante
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Creamos nuestro primer componente
+function saludo() {
+
+    // Devolvemos un h1 con el texto Hola mundo
+    return <h1>Hola mundo</h1>
+}
+
 // Creamos un hola mundo con react
-root.render(<h1>Hola mundo</h1>);
+root.render(saludo());
