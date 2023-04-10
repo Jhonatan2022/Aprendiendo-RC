@@ -1,3 +1,16 @@
+/* Atajos de teclado: 
+    Ctrl + K + C (Comentar)
+    Ctrl + K + U (Descomentar)
+    Ctrl + K + F (Formatear)
+    Alt + Flecha Arriba (Mover linea arriba)
+    Alt + Flecha Abajo (Mover linea abajo)
+    ALT + SHIFT + A (Comentar varias lineas, un bloque de código)
+    Ctrl + K + 0 (Colapsar todo)
+    Ctrl + K + J (Expandir todo)
+
+    Documantación: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array
+ */
+
 // CREANDO FUNCIONES
 function hola1() {
     // Mostramos el mensaje por consola
@@ -211,5 +224,176 @@ const sumar = (a, b) => {
     return a + b
 }
 
+// Forma abreviada de escribir la función flecha
+const sumar2 = (a, b) => a + b
+// Para crear un objeto con una función flecha
+const crearObjeto = () => ({ nombre: "Jhonattan" })
+
 // Llamamos a la función
 console.log(sumar(2, 3))
+
+
+
+//-------------------------------------------------------------------------------
+// RETURN EN FUNCIONES
+const permitido = true;
+// Creamos una un boton
+const boton3 = document.createElement("button");
+// Agregamos un texto al html
+boton3.innerText = "Click";
+// Agregamos un evento al boton
+boton3.addEventListener("click", () => {
+    // Creamos una función
+    // Creamos una condicional
+    if (permitido) {
+        // Retornamos un mensaje
+        return "Acceso permitido";
+    } else {
+        // Retornamos un mensaje
+        return "Acceso denegado";
+    }
+    // Forma de abreviar la condicional
+    if (permitido) {
+        return alert("Acceso permitido");
+    }
+    return alert("Acceso denegado");
+
+})
+
+// Agregamos el elemento al html
+document.body.append(boton3);
+
+
+
+//-------------------------------------------------------------------------------
+// AGREGAR ESTILOS POR MEDIO DE JAVASCRIPT
+// Creamos un boton
+const coolor = true;
+const boton4 = document.createElement("button");
+// Agregamos un texto al html
+boton4.innerText = "Click";
+// Creamos los estilos para concatenarlos en el boton
+const background = "white";
+const color = "black";
+
+// Agregamos un estilos al boton
+// Usaremos un operador ternario para concatenar los estilos
+boton4.style = `background-color: ${background};
+                border-radius: 15px;
+                color: ${coolor ? `green` : color};`;
+
+// Agregamos el boton al html
+document.body.append(boton4);
+
+
+
+//-------------------------------------------------------------------------------
+// RECORRIENDO ARREGLOS Y METODOS
+// Creamos un arreglo con nombres
+const usuarios = ['Jhonattan', 'Manuel', 'Jhon'];
+
+/*
+// Crearemos un bucle for para recoorer el arreglo
+for (let usuario = 0; usuario < usuarios.length; usuario++) {
+    // Mostramos el arreglo
+    const conteo = usuarios[usuario];
+    // Mostramso por consola el arreglo
+    console.log(conteo);
+} 
+*/
+
+/* // Abreviamos el anterior bucle for con un forEach
+usuarios.forEach(function(usuario) {
+    // Mostramos los elementos del arreglo
+    console.log(usuario);
+}) */
+
+
+/* // Ahora usaremos map para crear un nuevo arreglo
+const mapname = usuarios.map(function(usuario) {
+    // Creamos un nuevo arreglo
+    return `nombre: ${usuario}`;
+})
+
+// Mostramos el nuevo arreglo
+console.log(mapname); */
+
+/* 
+// Usaremos el metodo find para buscar un elemento en el arreglo
+const findname = usuarios.find(function(usuario) {
+
+    // Creamos una condicional para buscar un elemento
+    if (usuario === 'Jhonattan') {
+        // Retornamos el elemento encontrado
+        return usuario;
+    }
+})
+
+// Mostramos el elemento encontrado
+console.log(findname); */
+
+
+// Usaremos el metodo filter para buscar un elemento en el arreglo
+const filtername = usuarios.filter(function (usuario) {
+
+    // Creamos una condicional para buscar un elemento
+    // !=== significa si diferente
+    if (usuario === 'Jhonattan' || usuario === 'Manuel') {
+        // Retornamos el elemento encontrado
+        return usuario;
+    }
+})
+
+// Mostramos el elemento encontrado
+console.log(filtername); 
+
+
+
+//-------------------------------------------------------------------------------
+// UNIENDO DOS ARREGLOS CON SPREAD OPERATOR
+// Creamos dos arreglos con nombres
+const usuarios1 = ['Jhonattan', 'Manuel', 'Jhon'];
+const usuarios2 = ['Florez', 'Ramirez', 'Lopez'];
+
+/* // Concatenamos los dos arreglos
+const todos = usuarios1.concat(usuarios2);
+ */
+// Usamos el spread operator para concatenar los arreglos
+console.log([...usuarios1, ...usuarios2]) ;
+
+// Usaremos el metodos spread operator para unir objetos
+const persona5 = {
+    nombre: 'Jhonattan',
+    edad: 20
+}
+
+const persona6 = {
+    apellido: 'Florez',
+    pais: 'Colombia'
+}
+
+// Unimos los dos objetos
+const persona7 = {
+    ...persona5,
+    ...persona6
+}
+
+// Mostramos el objeto unido
+console.log(persona7)
+
+
+
+//-------------------------------------------------------------------------------
+// ECMASCRIPT MODULOS IMPORT Y EXPORT
+// Importamos la funcion que creamos en modulo.js
+/* import {modulo, multiplicacion} from './modulo.js';
+
+// Llamamos a la funcion
+console.log(modulo(12, 8));
+console.log(multiplicacion(2, 8)); */
+
+// Importamos la funcion por defecto
+import modulo from './modulo.js';
+
+// Llamamos a la funcion
+console.log(modulo);
