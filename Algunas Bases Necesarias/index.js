@@ -7,6 +7,7 @@
     ALT + SHIFT + A (Comentar varias lineas, un bloque de código)
     Ctrl + K + 0 (Colapsar todo)
     Ctrl + K + J (Expandir todo)
+    Ctrl + D (Seleccionar la palabra y las demás que coincidan)
 
     Documantación: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array
  */
