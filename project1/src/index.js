@@ -10,6 +10,10 @@ import Operaciones, { Multiplicacion } from "./Operations";
 
 // Importamos nuestro componente card
 import {Carduser} from "./card";
+import { Mybotton } from "./Button";
+
+// Exportamos nuestro componente botón
+export { Mybotton } from "./Button";
 
 
 
@@ -76,7 +80,7 @@ function Saludo2({ tittle, num = 0, boole = false, arreglo = [89, 3] }) {
 // Creamos un hola mundo con react
 root.render(
   <>
-    <Saludo />
+    {/* <Saludo />
     <Saludo2 tittle="Título 2" />
     <Persona />
     <Operaciones />
@@ -88,6 +92,8 @@ root.render(
       points={[45, 56, 89]}
       adress={{ street: "Calle 1", city: "Bogota" }}
       grrt={function () { alert("Hola a todos") }}
-    />
+    /> */}
+    <Mybotton text='Click me' />
+    <Mybotton text='' name='manuel' />
   </>
 );
