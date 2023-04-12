@@ -14,9 +14,8 @@ export function TaskCard({ ready }) {
         margin: "10px",
     }; */
 
-
     return (
-        <div className="card col-md-4 offset-md-4" >
+        <div className="card col-md-4 offset-md-4 text-bg-dark" >
 
             <div className={
                 // Creamos una condicional para mostrar un fon
@@ -31,8 +30,6 @@ export function TaskCard({ ready }) {
             </div>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item">An item</li>
-                <li className="list-group-item">A second item</li>
-                <li className="list-group-item">A third item</li>
             </ul>
         </div>
     );
