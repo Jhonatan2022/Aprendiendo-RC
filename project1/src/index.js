@@ -1,6 +1,6 @@
 // Al tener el nombre index react lo reconoce como el archivo principal a cargar
 // Importamos react para poder usar JSX
-import React from "react";
+import React, { useState, useEffect } from "react"; // Importamos useState para manejar los estados de los componentes
 
 // Importamos ReactDOM para renderizar el componente
 import ReactDOM from "react-dom/client";
@@ -9,7 +9,12 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
 
 // Importamos la libreria de iconos de React
-import { IconName } from "react-icons/fa";
+import {
+  FaArrowAltCircleUp,
+  FaArrowDown,
+  FaRedo,
+  FaCloudUploadAlt,
+} from "react-icons/fa";
 
 // Importamos nuestro componente
 import Operaciones, { Multiplicacion } from "./Operations";
@@ -127,6 +132,116 @@ const users = [
   },
 ];
 
+// Usaremos el metodo State para manejar los estados de los componentes
+// Creamos una funcion para incrementar el contador
+function Increment() {
+  // Creamos un estado para el contador
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div>
+      {/* Imprimimos el valor del contador */}
+      <h1 className={counter < 0 ? "text-danger text-center" : "text-success text-center"}>
+        Contador: {counter}
+      </h1>
+
+      {/* Creamos un botón para incrementar el contador */}
+      <button
+        className="btn btn-primary me-2"
+        onClick={() => {
+          // Incrementamos el contador en 1
+          setCounter(counter + 1);
+        }}
+      >
+        <FaArrowAltCircleUp className="me-2" />
+        Incrementar
+      </button>
+
+      {/* Creamos un botón para decrementar el contador */}
+      <button
+        className="btn btn-danger"
+        onClick={() => {
+          // Decrementamos el contador en 1
+          setCounter(counter - 1);
+        }}
+      >
+        <FaArrowDown className="me-2" />
+        Decrementar
+      </button>
+
+      {/* Creamos un botón para reiniciar el contador */}
+      <button
+        className="btn btn-warning ms-2"
+        onClick={() => {
+          // Reiniciamos el contador
+          setCounter(0);
+        }}
+      >
+        <FaRedo className="me-2" />
+        Reiniciar
+      </button>
+    </div>
+  );
+}
+
+
+
+// Usaremos el metodo State para manejar inputs
+// Creamos una funcion para incrementar el contador
+function Input() {
+  // Creamos un estado para el contador
+  const [mensaje, setMensaje] = useState('');
+
+  return (
+    <div>
+      {/* Imprimimos el valor del contador */}
+      <h1 className="text-center">: {mensaje}...</h1>
+
+      {/* Creamos un input para ingresar datos */}
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Ingrese un texto"
+
+        // Usamos el evento onChange para guardar el valor del input en el estado
+        onChange={(e) => {
+          // Imprimimos por consola el valor del input
+          console.log(e.target.value + "...");
+          // Guardamos el valor del input en el estado
+          setMensaje(e.target.value);
+        }}
+      />
+
+      {/* Creamos un botón para guardar */}
+      <button
+        className="btn btn-primary mt-2"
+        onClick={() => {
+          // Mostramos una alerta con el valor del input
+          alert('El mensaje guardado es: ' + mensaje);
+        }}
+      >
+        <FaCloudUploadAlt className="me-2" />
+        Guardar
+      </button>
+    </div>
+  );
+}
+
+
+
+// Usaremos el metodo useEffect para manejar los estados de los componentes
+// Creamos una funcion para incrementar el contador
+function UseEffect() {
+  // Creamos un estado para el contador
+  const [ efect, setEfect] = useState(0);
+
+  // Usamos el metodo useEffect para ejecutar una función cuando se renderiza el componente
+  useEffect(() => {
+    // Imprimimos por consola el valor del contador
+    console.log('El contador es: ' + efect);
+  });
+}
+
 
 
 // Creamos un hola mundo con react
@@ -164,7 +279,6 @@ root.render(
     </form>
     <Posts /> */}
 
-
     {/* {users.map((user, indice) => {
       // Retornamos el componente
       return (
@@ -181,5 +295,10 @@ root.render(
         </div>
       );
     })} */}
+    <div className="col-md-4 offset-md-4">
+      <Increment />
+      <Input />
+      <UseEffect />
+    </div>
   </>
 );
