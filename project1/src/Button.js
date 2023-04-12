@@ -15,7 +15,7 @@ export function Mybotton({ text, name }) {
     }
  */
     // Retornamos el boton
-    return <button onClick={mensaje}>{ text } & { name }</button>;
+    return <button onClick={mensaje} className="btn me-5 bg-secondary">{ text } & { name }</button>;
 }
 
 

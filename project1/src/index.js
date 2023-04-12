@@ -5,15 +5,23 @@ import React from "react";
 // Importamos ReactDOM para renderizar el componente
 import ReactDOM from "react-dom/client";
 
+// Importamos Bootstrap para usarlo en nuestro proyecto
+import "bootstrap/dist/css/bootstrap.css";
+
 // Importamos nuestro componente
 import Operaciones, { Multiplicacion } from "./Operations";
 
 // Importamos nuestro componente card
-import {Carduser} from "./card";
-import { Mybotton } from "./Button";
+import { Carduser } from "./User";
 
 // Exportamos nuestro componente botón
-export { Mybotton } from "./Button";
+import { Mybotton } from "./Button";
+
+// llamamos a nuestro componente Task
+import { TaskCard } from "./Task";
+
+// Importamos el componente que creamos con class
+import { Car } from "./Component";
 
 
 
@@ -95,5 +103,7 @@ root.render(
     /> */}
     <Mybotton text='Click me' />
     <Mybotton text='' name='manuel' />
+    <TaskCard ready={false} />
+    <Car name="Ferrari" amount={5000000} />
   </>
 );
