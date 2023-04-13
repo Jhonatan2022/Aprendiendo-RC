@@ -24,11 +24,15 @@ export function Mybotton({ text, name }) {
   );
 }
 
+
+
 // Definimos los tipos de datos que debe recibir la funcion
 Mybotton.propTypes = {
   // Solo acepta string y es requerido
   text: PropTypes.string.isRequired,
 };
+
+
 
 // Definimos los valores por defecto
 Mybotton.defaultProps = {
