@@ -22,14 +22,39 @@ import Tasklist from "./Tasklist";
 
 // Importamos el componente TaskForm
 import Formtask from "./TaskForm";
+
+// Importamos el arreglo de tareas
+import { tasks } from "./tasks";
+
+// Importamos useState para poder modificar el estado de las tareas
+import { useState, useEffect } from "react";
 //-------------------------------------------------------------------------------
 
 
 
 // Creamos una funcion con un hola mundo
 function App() {
-  return (
 
+  // Creamos un estado para las tareas
+  const [task, setTask] = useState([]);
+
+  // Utilizamos useEffect para que se ejecute una vez
+  useEffect(() => {
+    // Asignamos el arreglo de tareas
+    setTask(tasks);
+  }, []);
+
+
+  // Creamos una funcion para agregar tareas
+  function createTask (task) {
+    // Agregamos el objeto al arreglo
+    setTask([...tasks, task]);
+
+  };
+
+
+  // Retornamos el componente con el contenido
+  return (
     // Insertamos todo en componentes de bootstrap
     <div className="container">
       <div className="row">
@@ -42,8 +67,8 @@ function App() {
       </div>
       <div className="row">
         <div className="col-md-4 offset-md-4">
-          <Formtask />
-          <Tasklist />
+          <Formtask createTask={createTask}/>
+          <Tasklist tasks={task} />
         </div>
       </div>
     </div>
