@@ -67,9 +67,9 @@ function App() {
 
   
   // Creamos una funcion para eliminar una tarea
-  const deleteTask = (id) => {
+  const deleteTask = (Id) => {
     // Filtramos el arreglo de tareas
-    const newTasks = tasks.filter((task) => task.id !== id);
+    const newTasks = tasks.filter(task => task.id !== Id);
 
     // Actualizamos el estado de las tareas
     setTasks(newTasks);
@@ -83,7 +83,7 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="col-md-4 offset-md-4">
-          <h1 className="text-center mt-5">
+          <h1 className="text-center mt-2">
             <FaJoomla />
             Task Manager
           </h1>
