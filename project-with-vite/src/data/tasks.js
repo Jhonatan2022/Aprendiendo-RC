@@ -1,13 +1,13 @@
 // Creamos una constante con un arreglo de tareas
 export const tasks = [
     {
-        id: 1,
-        name: "Doctor Appointment",
+        id: 0,
+        text: "Doctor Appointment",
         description: "Hello word",
     },
     {
-        id: 2,
-        name: "Meeting at School",
+        id: 1,
+        text: "Meeting at School",
         description: "Goodbye word",
     },
 ];

@@ -1,35 +1,30 @@
+// Importamos el componente TaskCard
+import TaskCard from "./TaskCard";
+
 // Creamos una funcion para mostrar las tareas
-
 // Una forma function Tasklist(props)
-function Tasklist({ tasks }) {
-
+function Tasklist({ tasks, deleteTask }) {
   // Mostramos por consola el arreglo de tareas
   // console.log(props.tasks);
 
-
   // Creamos una condicional en caso de que no haya tareas
   if (tasks.length === 0) {
+    // Retornamos un mensaje
     return <h1>No hay tareas</h1>;
   }
 
-
+  // Retornamos el componente con el contenido
   return (
     <div>
       {
         // Usamos map para recorrer las tareas
         tasks.map((task) => (
-          <div key={task.id} className="mt-3 mb-3 card bg-dark text-bg-dark">
-            <h1 className="text-center fs-4">{task.name}</h1>
-
-            <p className="text-center fs-6">{task.description}</p>
-          </div>
+          <TaskCard key={task.id} task={task} deleteTask={deleteTask}/>
         ))
       }
     </div>
   );
 }
-
-
 
 // Lo exportamos por defecto
 export default Tasklist;

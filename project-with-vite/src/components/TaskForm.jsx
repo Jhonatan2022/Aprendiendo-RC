@@ -8,54 +8,57 @@ import { useState } from "react";
 
 
 // Crearemos un formulario para añadir tareas
-function Formtask({ createTask }) {
+function Formtask({createTask}) {
 
   // Creamos un estado para guardar el nombre
-  const [task, setTask] = useState({ name: "" });
+  const [text, setText] = useState('');
 
   // Creamos un estado para guardar la descripcion
-  const [description, setDescription] = useState({ description: "" });
+  const [description, setDescription] = useState('');
 
-
-  // Creamos una funcion para guardar los datos del formulario
-  const Datos = (e) => {
-    // Evitamos que se recargue la pagina
-    e.preventDefault();
 
 
     // Creamos una constante para guardar los datos
-    const newTask = {
+    const submit = (e) => {
 
-      // Obtenemos los datos del estado name
-      name: task,
-
-      // Obtenemos los datos del estado description
-      description: description,
-    };
+      // Evitamos que se recargue la pagina
+      e.preventDefault()
 
     // Agregamos los datos al arreglo de tareas
-    createTask(newTask);
-  };
+    createTask({
+      text, 
+      description
+    });
+    
+    // Establecemos el estado de los inputs en vacio cuando se envie el formulario
+    setText('');
+    setDescription('');
+
+}
+
 
 
   // Retornamos el componente con el contenido
   return (
 
     // Creamos un formulario
-    <form onSubmit={Datos}>
+    <form onSubmit={submit}>
 
       {/* Creamos un input para el nombre */}
       <input
         className="form-control mb-3"
-        onChange={(e) => setTask(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
         placeholder="Add name task"
+        value={text}
+        autoFocus
       />
 
       {/* Creamos un input para la descripcion */}
       <input
         className="form-control mb-3"
-        onChange={(d) => setDescription(d.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
         placeholder="Add Description task"
+        value={description}
       />
 
       {/* Creamos un boton para crear la tarea */}

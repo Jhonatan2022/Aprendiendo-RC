@@ -9,8 +9,6 @@
 // clg + tab = console.log
 // -------------------------------------------------------------------------
 
-
-
 // Importamos la libreria de bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -18,13 +16,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaJoomla } from "react-icons/fa";
 
 // Importamos el componente Tasklist
-import Tasklist from "./Tasklist";
+import Tasklist from "./components/Tasklist";
 
 // Importamos el componente TaskForm
-import Formtask from "./TaskForm";
+import Formtask from "./components/TaskForm";
 
 // Importamos el arreglo de tareas
-import { tasks } from "./tasks";
+import { tasks as data } from "./data/tasks";
 
 // Importamos useState para poder modificar el estado de las tareas
 import { useState, useEffect } from "react";
@@ -36,21 +34,47 @@ import { useState, useEffect } from "react";
 function App() {
 
   // Creamos un estado para las tareas
-  const [task, setTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
+
+
 
   // Utilizamos useEffect para que se ejecute una vez
   useEffect(() => {
     // Asignamos el arreglo de tareas
-    setTask(tasks);
+    setTasks(data);
   }, []);
 
 
-  // Creamos una funcion para agregar tareas
-  function createTask (task) {
-    // Agregamos el objeto al arreglo
-    setTask([...tasks, task]);
 
+  // Creamos una funcion para agregar tareas
+  function createTask(task) {
+    // Agregamos el objeto al arreglo
+    setTasks([
+      ...tasks,
+      {
+        // Obtenemos el id de la tarea
+        id: tasks.length,
+
+        // Obtenemos el nombre de la tarea
+        text: task.text,
+
+        // Obtenemos la descripcion de la tarea
+        description: task.description,
+      },
+    ]);
+  }
+
+
+  
+  // Creamos una funcion para eliminar una tarea
+  const deleteTask = (id) => {
+    // Filtramos el arreglo de tareas
+    const newTasks = tasks.filter((task) => task.id !== id);
+
+    // Actualizamos el estado de las tareas
+    setTasks(newTasks);
   };
+
 
 
   // Retornamos el componente con el contenido
@@ -67,15 +91,13 @@ function App() {
       </div>
       <div className="row">
         <div className="col-md-4 offset-md-4">
-          <Formtask createTask={createTask}/>
-          <Tasklist tasks={task} />
+          <Formtask createTask={createTask} />
+          <Tasklist tasks={tasks} deleteTask={deleteTask}/>
         </div>
       </div>
     </div>
   );
 }
-
-
 
 // La exportamos por defecto
 export default App;
