@@ -2,7 +2,11 @@
 import { ImMagicWand } from "react-icons/im";
 
 // Importamos useState para poder usar el estado
-import { useState } from "react";
+// Importamos useContext para poder usar el contexto
+import { useState, useContext } from "react";
+
+// Importamos el contexto de tareas
+import { TaskContext } from "../context/TaskContext";
 // ---------------------------------------------------------------------------
 
 
@@ -10,6 +14,12 @@ import { useState } from "react";
 // Crearemos un formulario para añadir tareas
 function Formtask({createTask}) {
 
+/*   // Creamos una constante para guardar el contexto
+  const valor = useContext (TaskContext);
+
+  // Mostramos por consola el contexto
+  console.log('Soy el valor de formulario ' + valor);
+ */
   // Creamos un estado para guardar el nombre
   const [text, setText] = useState('');
 

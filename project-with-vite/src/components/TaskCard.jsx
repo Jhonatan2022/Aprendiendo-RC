@@ -2,9 +2,21 @@
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 
 // Importamos en componente TaskContext
-import TaskContext  from "../context/TaskContext";
+import {TaskContext}  from "../context/TaskContext";
+
+// Importamos la funcion useContext de react
+import { useContext } from "react";
+// ---------------------------------------------------------------------------
+
+
 
 function TaskCard({ task, deleteTask }) {
+
+  // Llamamos por medio de useContext el componente TaskContext
+  const valor = useContext(TaskContext);
+  
+  // Mostramos por consola la variable de prueba
+  console.log(valor);
     
   // Creamos una funcion para eliminar una tarea
 //   const deleteTask = () => {
