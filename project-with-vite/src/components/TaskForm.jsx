@@ -12,39 +12,42 @@ import { TaskContext } from "../context/TaskContext";
 
 
 // Crearemos un formulario para añadir tareas
-function Formtask({createTask}) {
+function Formtask() {
+  
+  // Usamos el contexto de tareas
+  const { createTask } = useContext(TaskContext);
 
-/*   // Creamos una constante para guardar el contexto
+  /*   // Creamos una constante para guardar el contexto
   const valor = useContext (TaskContext);
 
   // Mostramos por consola el contexto
   console.log('Soy el valor de formulario ' + valor);
  */
+
+
   // Creamos un estado para guardar el nombre
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   // Creamos un estado para guardar la descripcion
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
 
 
 
-    // Creamos una constante para guardar los datos
-    const submit = (e) => {
-
-      // Evitamos que se recargue la pagina
-      e.preventDefault()
+  // Creamos una constante para guardar los datos
+  const submit = (e) => {
+    // Evitamos que se recargue la pagina
+    e.preventDefault();
 
     // Agregamos los datos al arreglo de tareas
     createTask({
-      text, 
-      description
+      text,
+      description,
     });
-    
-    // Establecemos el estado de los inputs en vacio cuando se envie el formulario
-    setText('');
-    setDescription('');
 
-}
+    // Establecemos el estado de los inputs en vacio cuando se envie el formulario
+    setText("");
+    setDescription("");
+  };
 
 
 
@@ -61,6 +64,7 @@ function Formtask({createTask}) {
         placeholder="Add name task"
         value={text}
         autoFocus
+        required
       />
 
       {/* Creamos un input para la descripcion */}
@@ -81,5 +85,6 @@ function Formtask({createTask}) {
 
 
 
+//---------------------------------------------------------------------------
 // Lo exportamos por defecto
 export default Formtask;
