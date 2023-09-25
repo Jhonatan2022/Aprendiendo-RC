@@ -22,12 +22,8 @@ import Tasklist from "./components/Tasklist";
 import Formtask from "./components/TaskForm";
 //-------------------------------------------------------------------------------
 
-
-
 // Creamos una funcion con un hola mundo
 function App() {
-
-
   // Retornamos el componente con el contenido
   return (
     // Insertamos todo en componentes de bootstrap
@@ -42,15 +38,13 @@ function App() {
       </div>
       <div className="row">
         <div className="col-md-10 offset-md-1">
-          <Formtask/>
-          <Tasklist/>
+          <Formtask />
+          <Tasklist />
         </div>
       </div>
     </div>
   );
 }
-
-
 
 // La exportamos por defecto
 export default App;

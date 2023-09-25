@@ -1,43 +1,21 @@
-// Al tener el nombre index react lo reconoce como el archivo principal a cargar
-// Importamos react para poder usar JSX
 import React, { useState, useEffect } from "react"; // Importamos useState para manejar los estados de los componentes
-
-// Importamos ReactDOM para renderizar el componente
 import ReactDOM from "react-dom/client";
-
-// Importamos Bootstrap para usarlo en nuestro proyecto
 import "bootstrap/dist/css/bootstrap.css";
-
-// Importamos la libreria de iconos de React
 import {
   FaArrowAltCircleUp,
   FaArrowDown,
   FaRedo,
   FaCloudUploadAlt,
 } from "react-icons/fa";
-
-// Importamos nuestro componente
 import Operaciones, { Multiplicacion } from "./Operations";
-
-// Importamos nuestro componente card
 import { Carduser } from "./User";
-
-// Exportamos nuestro componente botón
 import { Mybotton } from "./Button";
-
-// llamamos a nuestro componente Task
 import { TaskCard } from "./Task";
-
-// Importamos el componente que creamos con class
 import { Car } from "./Component";
-
-// Importamos el componente Post
 import { Posts } from "./Post";
 
-// Creamos un elemento root con reactDom y lo guardamos en una constante
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// Creamos nuestro primer componente
 function Saludo() {
   //Recomendable que el nombre del componente empiece con mayuscula
   const tittle = false;
@@ -174,8 +152,6 @@ function Increment() {
   );
 }
 
-
-
 // Usaremos el metodo State para manejar inputs
 // Creamos una funcion para incrementar el contador
 function Input() {
@@ -225,14 +201,16 @@ function Input() {
         <FaCloudUploadAlt className="me-2" />
         Guardar
       </button>
-      <hr/>
+      <hr />
 
       {/* Creamos un contador */}
-      <h1 className="text-center">Counter: { contador }</h1>
-      <button onClick={()=>{
-        // Incrementamos el contador en 1
-        setContador(contador + 1);
-      } }>
+      <h1 className="text-center">Counter: {contador}</h1>
+      <button
+        onClick={() => {
+          // Incrementamos el contador en 1
+          setContador(contador + 1);
+        }}
+      >
         Incrementar
       </button>
     </div>

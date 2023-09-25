@@ -8,10 +8,7 @@ import { TaskContext } from "../context/TaskContext";
 import { useContext } from "react";
 // ---------------------------------------------------------------------------
 
-
-
 function TaskCard({ task }) {
-
   // Llamamos por medio de useContext el componente TaskContext
   const { deleteTask } = useContext(TaskContext);
 
@@ -19,8 +16,6 @@ function TaskCard({ task }) {
   //   const deleteTask = () => {
   //     alert("Esta seguro de eliminar la tarea: " + task.id + " ?");
   //   };
-
-
 
   // Retornamos el componente con el contenido
   return (
@@ -43,8 +38,5 @@ function TaskCard({ task }) {
   );
 }
 
-
-
-// ---------------------------------------------------------------------------
 // Lo exportamos por defecto
 export default TaskCard;

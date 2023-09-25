@@ -1,27 +1,12 @@
-// Importamos React de react
-import React from 'react'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { TaskContextProvider } from "./context/TaskContext";
 
-// Importamos la funcion createRoot de react-dom/client
-import ReactDOM from 'react-dom/client'
-
-// Importamos la aplicacion
-import App from './App'
-
-// Importamos los estilos globales
-import './index.css'
-
-// Importamos los componentes globales
-import { TaskContextProvider } from './context/TaskContext'
-
-
-
-// Renderizamos la aplicacion
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-
     <TaskContextProvider>
-    <App />
+      <App />
     </TaskContextProvider>
-
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

@@ -9,11 +9,8 @@ import { useState, useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
 // ---------------------------------------------------------------------------
 
-
-
 // Crearemos un formulario para añadir tareas
 function Formtask() {
-  
   // Usamos el contexto de tareas
   const { createTask } = useContext(TaskContext);
 
@@ -24,14 +21,11 @@ function Formtask() {
   console.log('Soy el valor de formulario ' + valor);
  */
 
-
   // Creamos un estado para guardar el nombre
   const [text, setText] = useState("");
 
   // Creamos un estado para guardar la descripcion
   const [description, setDescription] = useState("");
-
-
 
   // Creamos una constante para guardar los datos
   const submit = (e) => {
@@ -49,14 +43,10 @@ function Formtask() {
     setDescription("");
   };
 
-
-
   // Retornamos el componente con el contenido
   return (
-
     // Creamos un formulario
     <form onSubmit={submit}>
-
       {/* Creamos un input para el nombre */}
       <input
         className="form-control mb-3"
@@ -82,8 +72,6 @@ function Formtask() {
     </form>
   );
 }
-
-
 
 //---------------------------------------------------------------------------
 // Lo exportamos por defecto

@@ -10,18 +10,13 @@ import { createContext, useState, useEffect } from "react";
 import { tasks as data } from "../data/tasks";
 // ----------------------------------------------------------------------------
 
-
-
 // Llamamso la funcion createContext para almacenar los datos
 export const TaskContext = createContext();
-
-
 
 // Este componente es el que se encarga de los componentes hijos (Engloba a todos los componentes)
 export function TaskContextProvider(props) {
   // Creamos un estado para las tareas
   const [tasks, setTasks] = useState([]);
-
 
   // Creamos una funcion para agregar tareas
   function createTask(task) {
@@ -41,8 +36,6 @@ export function TaskContextProvider(props) {
     ]);
   }
 
-
-
   // Creamos una funcion para eliminar una tarea
   const deleteTask = (Id) => {
     // Filtramos el arreglo de tareas
@@ -52,15 +45,11 @@ export function TaskContextProvider(props) {
     setTasks(newTasks);
   };
 
-
-
   // Utilizamos useEffect para que se ejecute una vez
   useEffect(() => {
     // Asignamos el arreglo de tareas
     setTasks(data);
   }, []);
-
-
 
   return (
     <TaskContext.Provider
